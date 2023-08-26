@@ -185,9 +185,10 @@ class TokenClassificationExplainer(BaseExplainer):
                 input_ids,
                 position_ids=position_ids,
                 attention_mask=attention_mask,
+                return_dict=True,
             )
         else:
-            preds = self.model(input_ids, attention_mask)
+            preds = self.model(input_ids, attention_mask, return_dict=True)
 
         preds = preds.logits  # preds.shape = [N_BATCH, N_TOKENS, N_CLASSES]
 
